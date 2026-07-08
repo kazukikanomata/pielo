@@ -1,0 +1,124 @@
+/* ============================================================
+   JAPANDI — pielo worldview kit v0.1
+   使い方:
+   - 素のCSS: このファイルを読み込み、var(--jpd-*) を参照する
+   - Tailwind v4: 下部の @theme ブロックごと globals.css に貼る
+   ============================================================ */
+
+:root {
+  /* --- 色: 生成り・砂・苔・炭 --- */
+  --jpd-bg: #EFE9DE;            /* 背景(生成り) */
+  --jpd-surface: #F5F1E8;       /* カード面 */
+  --jpd-surface-2: #E9E2D4;     /* 第二面(帯・交互背景) */
+  --jpd-ink: #3A3733;           /* 本文(炭) */
+  --jpd-ink-soft: #77705F;      /* 補助文字 */
+  --jpd-ink-faint: #9A917F;     /* 弱い文字・プレースホルダ */
+  --jpd-accent: #8A8F79;        /* 苔。線と小さな図形にのみ */
+  --jpd-accent-warm: #CBB99A;   /* 砂。背景の変化用 */
+  --jpd-line: rgba(58, 55, 51, 0.16);
+
+  /* --- 形: ほぼ角を丸めない・影を持たない --- */
+  --jpd-radius: 2px;
+  --jpd-radius-lg: 4px;         /* 最大。これ以上丸めない */
+  --jpd-border: 1px solid var(--jpd-line);
+  --jpd-shadow: none;           /* 影は使わない(面の色差で分ける) */
+
+  /* --- 文字 --- */
+  --jpd-font-heading: 'Shippori Mincho', 'Cormorant Garamond', serif;
+  --jpd-font-body: 'Zen Kaku Gothic New', 'Karla', sans-serif;
+  --jpd-tracking-heading: 0.28em;
+  --jpd-tracking-wide: 0.45em;
+  --jpd-leading-body: 2.0;
+
+  /* --- 間(ま) --- */
+  --jpd-space-section: clamp(96px, 14vh, 160px); /* セクション間 */
+  --jpd-space-inner: 44px;                        /* カード内余白 */
+
+  /* --- 動き: 静かに --- */
+  --jpd-transition: 0.3s ease-out;
+}
+
+/* --- 最小の部品レシピ --- */
+
+.jpd-body {
+  background: var(--jpd-bg);
+  color: var(--jpd-ink);
+  font-family: var(--jpd-font-body);
+  line-height: var(--jpd-leading-body);
+}
+
+.jpd-heading {
+  font-family: var(--jpd-font-heading);
+  font-weight: 500;
+  letter-spacing: var(--jpd-tracking-heading);
+}
+
+/* ボタン: 塗らない。文字+下線 */
+.jpd-button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--jpd-ink);
+  padding: 0 0 6px;
+  color: var(--jpd-ink);
+  font-family: var(--jpd-font-body);
+  letter-spacing: 0.28em;
+  cursor: pointer;
+  transition: color var(--jpd-transition), border-color var(--jpd-transition);
+}
+.jpd-button:hover { color: var(--jpd-accent); border-color: var(--jpd-accent); }
+
+/* 第二ボタン: 1pxの細枠 */
+.jpd-button-outline {
+  background: none;
+  border: 1px solid var(--jpd-ink);
+  border-radius: var(--jpd-radius);
+  padding: 12px 32px;
+  letter-spacing: 0.24em;
+}
+
+/* カード: 影なし、面の色差のみ */
+.jpd-card {
+  background: var(--jpd-surface);
+  border-radius: var(--jpd-radius);
+  padding: var(--jpd-space-inner);
+}
+
+/* 入力欄: 下線のみ */
+.jpd-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--jpd-line);
+  padding: 10px 2px;
+  color: var(--jpd-ink);
+}
+.jpd-input::placeholder { color: var(--jpd-ink-faint); }
+.jpd-input:focus { outline: none; border-bottom-color: var(--jpd-accent); }
+
+/* 区切り: 短い線 */
+.jpd-divider {
+  width: 28px;
+  height: 1px;
+  background: var(--jpd-accent);
+  margin: 24px auto;
+}
+
+/* ============================================================
+   Tailwind v4 — globals.css に貼る
+   例: bg-jpd-bg text-jpd-ink font-jpd-heading rounded-jpd
+   ============================================================
+
+@theme {
+  --color-jpd-bg: #EFE9DE;
+  --color-jpd-surface: #F5F1E8;
+  --color-jpd-surface-2: #E9E2D4;
+  --color-jpd-ink: #3A3733;
+  --color-jpd-ink-soft: #77705F;
+  --color-jpd-ink-faint: #9A917F;
+  --color-jpd-accent: #8A8F79;
+  --color-jpd-accent-warm: #CBB99A;
+  --font-jpd-heading: 'Shippori Mincho', 'Cormorant Garamond', serif;
+  --font-jpd-body: 'Zen Kaku Gothic New', 'Karla', sans-serif;
+  --radius-jpd: 2px;
+  --radius-jpd-lg: 4px;
+}
+*/

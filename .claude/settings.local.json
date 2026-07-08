@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/kanomatakazuki/.nvm/versions/node/v24.11.0/bin/node node_modules/.bin/oxlint)",
+      "Bash(/Users/kanomatakazuki/.nvm/versions/node/v24.11.0/bin/node node_modules/vite/bin/vite.js build)"
+    ]
+  }
+}
