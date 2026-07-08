@@ -41,4 +41,9 @@ src/
 ```
 
 新しい世界観を足すには `src/mocks/` にモック3点を作り、`src/data/movements.jsx` に1エントリ追加するだけ。
+
 # pielo
+
+## デプロイ
+
+https://pielo.vercel.app/
