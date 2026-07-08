@@ -4,6 +4,7 @@ import Entrance from './components/Entrance.jsx'
 import Gallery from './components/Gallery.jsx'
 import Causation from './components/Causation.jsx'
 import Quiz from './components/Quiz.jsx'
+import CardStudio from './components/CardStudio.jsx'
 import { movements, movementById } from './data/movements.jsx'
 
 const NEUTRAL_BLOBS = ['#D8D3C9', '#C9CDD4', '#E7E1D4', '#CFC8BC']
@@ -29,7 +30,8 @@ function Logo({ noseColor, onClick }) {
 }
 
 export default function App() {
-  const [view, setView] = useState('entrance')
+  // /#cards はSNSカード生成の内部ツール(ナビには出さない)
+  const [view, setView] = useState(() => (window.location.hash === '#cards' ? 'cards' : 'entrance'))
   const [movementId, setMovementId] = useState(movements[0].id)
   const [revealColors, setRevealColors] = useState(null) // クイズ/診断の正解時に背景を衣装替え
   const [cycleIdx, setCycleIdx] = useState(0)
@@ -111,6 +113,7 @@ export default function App() {
           {view === 'gallery' && <Gallery activeId={movementId} onSelectMovement={setMovementId} />}
           {view === 'causation' && <Causation onResult={openGallery} onGallery={() => openGallery()} onAmbient={setRevealColors} />}
           {view === 'quiz' && <Quiz onGallery={() => openGallery()} onAmbient={setRevealColors} />}
+          {view === 'cards' && <CardStudio />}
         </main>
 
         {view !== 'entrance' && (
