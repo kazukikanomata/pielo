@@ -4,6 +4,7 @@ import Entrance from './components/Entrance.jsx'
 import Gallery from './components/Gallery.jsx'
 import Causation from './components/Causation.jsx'
 import Quiz from './components/Quiz.jsx'
+import Motion from './components/Motion.jsx'
 import CardStudio from './components/CardStudio.jsx'
 import { movements, movementById } from './data/movements.jsx'
 
@@ -71,6 +72,7 @@ export default function App() {
     ['gallery', 'ギャラリー'],
     ['causation', '問いから'],
     ['quiz', 'クイズ'],
+    ['motion', 'モーション'],
   ]
 
   return (
@@ -113,6 +115,7 @@ export default function App() {
           {view === 'gallery' && <Gallery activeId={movementId} onSelectMovement={setMovementId} />}
           {view === 'causation' && <Causation onResult={openGallery} onGallery={() => openGallery()} onAmbient={setRevealColors} />}
           {view === 'quiz' && <Quiz onGallery={() => openGallery()} onAmbient={setRevealColors} />}
+          {view === 'motion' && <Motion />}
           {view === 'cards' && <CardStudio />}
         </main>
 
